@@ -12,6 +12,7 @@ var choicesEl = document.querySelector("#choices")
 var time = 60;
 var timeInterval;
 var qIndex = 0;
+var choices
 
 
 
@@ -30,7 +31,6 @@ function startGame(a) {
   renderQ()
   
     //TTimer triggers a question 
-    //create text box for answer
     //log the right answer
 
     //repeat ^^^ 4-5 times
@@ -59,14 +59,16 @@ function checkAnswer(event) {
     console.log(true);
   } else {
     console.log(false);
+
   }
   qIndex++;
   renderQ()
+
 }
 
 startBtn.addEventListener("click", startGame);
 
 //each question its own object
-
+//time interval
 
 
