@@ -3,6 +3,7 @@ var timerEl = document.querySelector("#timer");
 var startBtn = document.querySelector('#start');
 var startScreenEl = document.querySelector('#start-screen')
 var quizScreenEl = document.querySelector('#quiz-screen')
+var scoreScreenEl = document.querySelector('#score-screen')
 var questionEl = document.querySelector("#question")
 var choicesEl = document.querySelector("#choices")
 
@@ -12,7 +13,7 @@ var choicesEl = document.querySelector("#choices")
 var time = 60;
 var timeInterval;
 var qIndex = 0;
-var choices
+var choices;
 
 
 
@@ -24,6 +25,9 @@ function startGame(a) {
   console.log("hello")
   //function to start game
   timeInterval = setInterval(function () {
+    if (time <= 0) {
+      endGame()
+    }
     time--;
     timerEl.textContent = time;
   }, 1000)
@@ -33,7 +37,6 @@ function startGame(a) {
     //TTimer triggers a question 
     //log the right answer
 
-    //repeat ^^^ 4-5 times
 
 }
 
@@ -41,6 +44,8 @@ function renderQ() {
   var currentQ = questions[qIndex]
 
   questionEl.textContent = currentQ.title;
+
+  choicesEl.innerHTML = ""
 
   for (let i = 0; i < currentQ.choices.length; i++) {
     const choiceBtn = document.createElement('button')
@@ -57,13 +62,27 @@ function checkAnswer(event) {
   
   if (userChoice === questions[qIndex].correctAnswer) {
     console.log(true);
+    //something here to change answers?
   } else {
     console.log(false);
+    time -= 10
 
   }
+
+  console.log(qIndex, questions.length);
+  if (qIndex >= questions.length - 1) {
+    endGame()
+  } 
   qIndex++;
   renderQ()
 
+}
+
+function endGame() {
+  clearInterval(timeInterval)
+
+  quizScreenEl.hidden = true;
+  scoreScreenEl.hidden = false;
 }
 
 startBtn.addEventListener("click", startGame);

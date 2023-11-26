@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Game</title>
+</head>
+
+<body>
+  <header>
+    <h1>Quiz Game</h1>
+    <h2>Time: <span id="timer">60</span></h2>
+  </header>
+  <div id="start-screen">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis repellendus facilis tempore velit enim molestiae
+      maiores eligendi, ratione modi nobis nesciunt deserunt suscipit temporibus cupiditate laudantium quis perspiciatis
+      nulla nisi!</p>
+    <button id="start">start</button>
+  </div>
+  <div id="quiz-screen" hidden>
+    <h2 id="question"></h2>
+    <div id="choices"></div>
+  </div>
+
+  <div id="score-screen" hidden>
+    <p>initials please</p>
+    <input id="init-input" type="text">
+    <button id="submit-score">submit</button>
+  </div>
+
+  <script src="./asset/questions.js"></script>
+  <script src="./asset/script.js"></script>
+</body>
+
+</html>
