@@ -6,7 +6,8 @@ var quizScreenEl = document.querySelector('#quiz-screen')
 var scoreScreenEl = document.querySelector('#score-screen')
 var questionEl = document.querySelector("#question")
 var choicesEl = document.querySelector("#choices")
-
+var initialsEl = document. querySelector("#init-input")
+var submitScoreBtn = document.querySelector("#submit-score")
 
 
 //functional variables
@@ -85,9 +86,15 @@ function endGame() {
   scoreScreenEl.hidden = false;
 }
 
-startBtn.addEventListener("click", startGame);
+function saveScore() {
+  console.log(initialsEl.value);
+window.localStorage.setItem("highscore",JSON.stringify(initialsEl.value))
+window.location.href  = "highscores.html"
+}
 
-//each question its own object
-//time interval
+startBtn.addEventListener("click", startGame);
+submitScoreBtn.addEventListener("click", saveScore); 
+
+[]
 
 
