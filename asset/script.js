@@ -11,6 +11,7 @@ var submitScoreBtn = document.querySelector("#submit-score")
 
 
 //functional variables
+var scoreHistory = JSON.parse(localStorage.getItem('history')) || [];
 var time = 60;
 var timeInterval;
 var qIndex = 0;
@@ -88,13 +89,17 @@ function endGame() {
 
 function saveScore() {
   console.log(initialsEl.value);
-window.localStorage.setItem("highscore",JSON.stringify(initialsEl.value))
-window.location.href  = "highscores.html"
+  var newUser = {
+    name : initialsEl.value,
+    score: time
+  }
+
+  scoreHistory.push(newUser)
+  localStorage.setItem("history",JSON.stringify(scoreHistory))
+  location.href  = "highscores.html"
 }
 
 startBtn.addEventListener("click", startGame);
 submitScoreBtn.addEventListener("click", saveScore); 
-
-[]
 
 
